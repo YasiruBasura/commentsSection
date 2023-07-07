@@ -10,6 +10,17 @@ const Comments = ({currentUserId}) => {
   const [showSuccess, setShowSuccess] = useState(false);
   const rootComments = comments.filter((comments) => comments.parentId === 0);
     console.log("comments" , comments);
+
+  const getReplies= (commendId) =>{
+    return comments
+    .filter((comments)=>comments.parentId===commendId)
+    .sort(
+      (a,b)=>
+      new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+
+    );
+  };
+
   // fetching the data from the backend
   useEffect(() => {
     const fetchData = async () => {
@@ -34,7 +45,7 @@ const Comments = ({currentUserId}) => {
       <div className='comments-container'>
         {rootComments.map((rootComment)=>(
           // <div key={rootComment.id}>{rootComment.body}</div>
-          <Comment key={rootComment.id} comment = {rootComment}/>
+          <Comment key={rootComment.id} comment = {rootComment} replies={getReplies(rootComment.id)}/>
           
         ))}
       </div>
