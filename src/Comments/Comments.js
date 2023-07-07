@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Comments = () => {
+const Comments = ({currentUserId}) => {
   return (
     <div>This is the Comments</div>
   )
