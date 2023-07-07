@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const COMMENT_API_BASE_URL = "http://localhost:8080/api/v1"
+const COMMENT_API_BASE_URL = "http://localhost:8080/api/v1/comment"
 class CommentService{
 
     saveComment(epic) { //take employee object as the input parameter
